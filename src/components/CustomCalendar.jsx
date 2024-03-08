@@ -18,6 +18,10 @@ const CustomCalendar = ({ onChange, value }) => {
       <CalendarWrapper>
         <Calendar
           calendarType="US"
+          style={{
+            width: '17.1875vw',
+            height: '27.77777777777778vh'
+          }}
           onChange={handleDateChange}
           value={value}></Calendar>
       </CalendarWrapper>
