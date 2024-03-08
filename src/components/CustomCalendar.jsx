@@ -5,61 +5,54 @@ import styled from 'styled-components'
 import 'react-calendar/dist/Calendar.css'
 
 const CustomCalendar = ({ onChange, value }) => {
-  const [nowDate, setNowDate] = useState('날짜')
-  const [isOpen, setIsOpen] = useState(false)
-
-  const handleToggleCalendar = () => {
-    setIsOpen(!isOpen)
-  }
+  const [nowDate, setNowDate] = useState(moment().format('YYYY년 MM월 DD일'))
 
   const handleDateChange = selectedDate => {
     onChange(selectedDate)
-    setIsOpen(false)
     setNowDate(moment(selectedDate).format('YYYY년 MM월 DD일'))
   }
 
   return (
-    <CalendarContainer>
-      <DropdownButton onClick={handleToggleCalendar}>{nowDate}</DropdownButton>
-      <CalendarWrapper isOpen={isOpen}>
+    <>
+      <DropdownButton>{nowDate}</DropdownButton>
+      <CalendarWrapper>
         <Calendar
           calendarType="US"
           onChange={handleDateChange}
           value={value}></Calendar>
       </CalendarWrapper>
-    </CalendarContainer>
+    </>
   )
 }
 
 export default CustomCalendar
 
-const CalendarContainer = styled.div`
-  position: relative;
-`
-
 const DropdownButton = styled.button`
-  width: 200px;
-  height: 48px;
-  border: 0.8px solid var(--festie-gray-600, #949494);
-  border-radius: 10px;
+  width: 8.427083333333334vw;
+  height: 3.7962962962962963vh;
+  border: none;
+  border-radius: 15px;
   padding: 0px 12px;
   color: var(--festie-gray-800, #3a3a3a);
-  font-size: 16px;
+  font-size: 0.625vw;
   font-style: normal;
   font-weight: 500;
   line-height: 140%;
-  text-align: start;
+  text-align: center;
   appearance: none;
-  background-color: white;
+  background-color: #ffffff;
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 12px;
+  margin-bottom: 1.9444444444444444vh;
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
 `
 
 const CalendarWrapper = styled.div`
-  z-index: 11;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  display: ${props => (props.isOpen ? 'block' : 'none')};
+  border: none;
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
 `
