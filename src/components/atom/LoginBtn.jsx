@@ -16,5 +16,5 @@ const LoginButton = styled.img`
   position: absolute;
   width: 2.604166666666667vw;
   height: 4.62962962962963vh;
-  right: 0;
+  right: 0.1vw;
 `
