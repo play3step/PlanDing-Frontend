@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import CustomCalendar from './CustomCalendar'
 import { useState } from 'react'
+import UserProfile from './UserProfile'
 
 const SideMenu = () => {
   const [selectedDate, setSelectedDate] = useState(new Date())
@@ -10,6 +11,7 @@ const SideMenu = () => {
   }
   return (
     <SideMenuContainer>
+      <UserProfile />
       <CustomCalendar
         value={selectedDate}
         onChange={handleDateChange}
