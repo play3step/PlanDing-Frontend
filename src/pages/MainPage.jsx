@@ -1,7 +1,5 @@
-import SideMenu from '../components/SideMenu'
-
 const MainPage = () => {
-  return <SideMenu />
+  return <h1>메인</h1>
 }
 
 export default MainPage

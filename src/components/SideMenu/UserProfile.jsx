@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import DefaultProfile from '/icon/user.png'
-import LoginBtn from './atom/LoginBtn'
+import LoginBtn from '../atom/LoginBtn'
 
 const UserProfile = ({ profileImage, name, code }) => {
   return (

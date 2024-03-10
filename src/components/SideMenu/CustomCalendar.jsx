@@ -52,7 +52,7 @@ const DropdownButton = styled.button`
 
 const CalendarWrapper = styled.div`
   .react-calendar {
-    width: 17.1875vw; /* 최대 너비를 제한합니다 */
+    width: 17.1875vw;
   }
 
   .react-calendar__tile {
