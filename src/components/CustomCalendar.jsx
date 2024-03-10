@@ -18,10 +18,6 @@ const CustomCalendar = ({ onChange, value }) => {
       <CalendarWrapper>
         <Calendar
           calendarType="US"
-          style={{
-            width: '17.1875vw',
-            height: '27.77777777777778vh'
-          }}
           onChange={handleDateChange}
           value={value}></Calendar>
       </CalendarWrapper>
@@ -55,7 +51,18 @@ const DropdownButton = styled.button`
 `
 
 const CalendarWrapper = styled.div`
-  border: none;
+  .react-calendar {
+    width: 17.1875vw; /* 최대 너비를 제한합니다 */
+  }
+
+  .react-calendar__tile {
+    font-size: 0.7vw;
+  }
+
+  .react-calendar__navigation button {
+    font-size: 1vw;
+  }
+
   box-shadow:
     0 3px 6px rgba(0, 0, 0, 0.16),
     0 3px 6px rgba(0, 0, 0, 0.23);
