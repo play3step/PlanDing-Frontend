@@ -1,7 +1,7 @@
-import ScheduleBox from '../components/SchedulePage/ScheduleBox'
+import Schedule from '../components/SchedulePage/Schedule'
 
 const SchedulePage = () => {
-  return <ScheduleBox />
+  return <Schedule />
 }
 
 export default SchedulePage
