@@ -2,13 +2,14 @@ import Box from '@mui/material/Box'
 import SpeedDial from '@mui/material/SpeedDial'
 import SpeedDialIcon from '@mui/material/SpeedDialIcon'
 import SpeedDialAction from '@mui/material/SpeedDialAction'
-
+import LoginIcon from '@mui/icons-material/Login'
 import ScheduleIcon from '@mui/icons-material/Schedule'
 import ChatIcon from '@mui/icons-material/Chat'
 import HomeIcon from '@mui/icons-material/Home'
 import { useNavigate } from 'react-router-dom'
 const actions = [
   { icon: <HomeIcon />, name: 'Home', route: '/' },
+  { icon: <LoginIcon />, name: 'Login', route: '/' },
   { icon: <ScheduleIcon />, name: 'Schedule', route: '/schedule' },
   { icon: <ChatIcon />, name: 'Chat', route: '/chat' }
 ]

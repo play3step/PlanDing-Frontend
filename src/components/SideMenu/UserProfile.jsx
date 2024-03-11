@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import DefaultProfile from '/icon/user.png'
-import LoginBtn from '../atom/LoginBtn'
 
 const UserProfile = ({ profileImage, name, code }) => {
   return (
@@ -19,7 +18,6 @@ const UserProfile = ({ profileImage, name, code }) => {
 
       <UserName>{name || 'User'}</UserName>
       <UserCode>{code || '#####'}</UserCode>
-      <LoginBtn />
     </Profilecontainer>
   )
 }

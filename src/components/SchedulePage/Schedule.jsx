@@ -1,9 +1,17 @@
+import moment from 'moment'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 const Schedule = () => {
+  const selectedDate = useSelector(state => state.calendar.selectedDate)
+  const formattedDate = moment(selectedDate).format('MMM D, YYYY')
+
   return (
     <ScheduleContainer>
-      <ScheduleHeader></ScheduleHeader>
+      <ScheduleHeader>
+        <ScheduleDate>{formattedDate}</ScheduleDate>
+      </ScheduleHeader>
+      <ScheduleBody></ScheduleBody>
     </ScheduleContainer>
   )
 }
@@ -24,4 +32,29 @@ const ScheduleHeader = styled.div`
   background-color: #9094fe;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+const ScheduleDate = styled.div`
+  width: 7.864583333333333vw;
+  height: 3.3333333333333335vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9da2ff;
+  border-radius: 20px;
+  font-size: 0.9375vw;
+  color: white;
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
+`
+
+const ScheduleBody = styled.div`
+  width: 41.5625vw;
+  height: 78.70370370370371vh;
+  background-color: #ffffff;
+  border-radius: 12px;
+  margin: 1.29vh auto;
 `
