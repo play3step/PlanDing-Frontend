@@ -1,14 +1,17 @@
 import styled from 'styled-components'
 import CustomCalendar from './CustomCalendar'
-import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { setDate } from '../../redux/modules/calendar'
 import UserProfile from './UserProfile'
 
 const SideMenu = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date())
+  const dispatch = useDispatch()
+  const selectedDate = useSelector(state => state.calendar.selectedDate)
 
-  const handleDateChange = selectedDate => {
-    setSelectedDate(selectedDate)
+  const handleDateChange = newDate => {
+    dispatch(setDate(newDate))
   }
+
   return (
     <SideMenuContainer>
       <UserProfile />

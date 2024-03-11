@@ -1,24 +1,17 @@
-import { useState } from 'react'
 import Calendar from 'react-calendar'
-import moment from 'moment'
-import styled from 'styled-components'
 import 'react-calendar/dist/Calendar.css'
+import styled from '@emotion/styled'
+import moment from 'moment'
 
-const CustomCalendar = ({ onChange, value }) => {
-  const [nowDate, setNowDate] = useState(moment().format('YYYY년 MM월 DD일'))
-
-  const handleDateChange = selectedDate => {
-    onChange(selectedDate)
-    setNowDate(moment(selectedDate).format('YYYY년 MM월 DD일'))
-  }
-
+const CustomCalendar = ({ value, onChange }) => {
+  const formattedDate = moment(value).format('YYYY년 MM월 DD일')
   return (
     <>
-      <DropdownButton>{nowDate}</DropdownButton>
+      <DropdownButton>{formattedDate}</DropdownButton>
       <CalendarWrapper>
         <Calendar
           calendarType="US"
-          onChange={handleDateChange}
+          onChange={onChange}
           value={value}></Calendar>
       </CalendarWrapper>
     </>

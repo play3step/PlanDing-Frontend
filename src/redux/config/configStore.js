@@ -1,7 +1,10 @@
-import { createStore } from 'redux'
-import { combineReducers } from 'redux'
+import { createStore, combineReducers } from 'redux'
+import calendarReducer from '../modules/calendar'
 
-const rootReducer = combineReducers({})
+const rootReducer = combineReducers({
+  calendar: calendarReducer
+})
+
 const store = createStore(rootReducer)
 
 export default store
