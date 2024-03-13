@@ -7,18 +7,23 @@ import ScheduleIcon from '@mui/icons-material/Schedule'
 import ChatIcon from '@mui/icons-material/Chat'
 import HomeIcon from '@mui/icons-material/Home'
 import { useNavigate } from 'react-router-dom'
+export const KAKAOURL = import.meta.env.VITE_KAKAO_URL
+
 const actions = [
   { icon: <HomeIcon />, name: 'Home', route: '/' },
-  { icon: <LoginIcon />, name: 'Login', route: '/' },
+  { icon: <LoginIcon />, name: 'Login', route: 'KAKAO_LOGIN' },
   { icon: <ScheduleIcon />, name: 'Schedule', route: '/schedule' },
   { icon: <ChatIcon />, name: 'Chat', route: '/chat' }
 ]
 
 const RouterBtn = () => {
   const navigate = useNavigate()
-
   const handleActionClick = route => {
-    navigate(route)
+    if (route === 'KAKAO_LOGIN') {
+      window.location.href = KAKAOURL
+    } else {
+      navigate(route)
+    }
   }
   return (
     <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>

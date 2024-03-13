@@ -4,6 +4,7 @@ import MainPage from './pages/MainPage'
 import SideMenu from './components/SideMenu/SideMenu'
 import SchedulePage from './pages/SchedulePage'
 import RouterBtn from './components/atom/RouterBtn'
+import LoginPage from './pages/LoginPage'
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
           <Route
             path="/"
             element={<MainPage />}
+          />
+          <Route
+            path="/Login"
+            element={<LoginPage />}
           />
           <Route
             path="/schedule"
