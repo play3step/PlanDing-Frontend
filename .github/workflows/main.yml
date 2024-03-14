@@ -24,7 +24,7 @@ jobs:
     - name: Build
       run: npm run build
       env:
-        VITE_KAKAO_URL: ${{ secrets.VITE_KAKAO_URL }}
+        VITE_SERVER_URL: ${{ secrets.VITE_SERVER_URL }}
     - name: Deploy to S3
       run: |
           aws s3 sync ./dist s3://planding
