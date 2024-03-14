@@ -1,18 +1,8 @@
 import basicApi from '../index'
 
-export const loginController = async () => {
+export const loginController = async ({ code }) => {
   try {
-    const response = await basicApi.post('/posts')
-    return response.data
-  } catch (error) {
-    console.error('Error fetching posts:', error)
-    throw error
-  }
-}
-
-export const userData = async () => {
-  try {
-    const response = await basicApi.get('/get')
+    const response = await basicApi.post('/api/v1/userInfo', { code })
     return response.data
   } catch (error) {
     console.error('Error fetching posts:', error)
