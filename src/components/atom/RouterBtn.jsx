@@ -20,7 +20,7 @@ const RouterBtn = () => {
   const navigate = useNavigate()
   const handleActionClick = route => {
     if (route === 'KAKAO_LOGIN') {
-      window.location.href = VITE_SERVER_URL + '/kakao'
+      window.location.href = VITE_SERVER_URL + '/oauth2/authorization/kakao'
     } else {
       navigate(route)
     }
