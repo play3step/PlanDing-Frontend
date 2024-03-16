@@ -8,7 +8,7 @@ const LoginPage = () => {
   const navigate = useNavigate()
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
-    const code = queryParams.get('code')
+    const code = queryParams.get('accessToken')
     if (code) {
       handleLogin(code)
     }
