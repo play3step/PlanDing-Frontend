@@ -1,6 +1,22 @@
 import moment from 'moment'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import ScheduleList from './ScheduleList'
+
+const MySchedule = [
+  {
+    time: '06:00 AM'
+  },
+  {
+    time: '09:00 AM'
+  },
+  {
+    time: '12:00 PM'
+  },
+  {
+    time: '15:00 PM'
+  }
+]
 
 const Schedule = () => {
   const selectedDate = useSelector(state => state.calendar.selectedDate)
@@ -11,7 +27,14 @@ const Schedule = () => {
       <ScheduleHeader>
         <ScheduleDate>{formattedDate}</ScheduleDate>
       </ScheduleHeader>
-      <ScheduleBody></ScheduleBody>
+      <ScheduleBody>
+        {MySchedule.map((data, index) => (
+          <ScheduleList
+            time={data.time}
+            key={index}
+          />
+        ))}
+      </ScheduleBody>
     </ScheduleContainer>
   )
 }
@@ -20,7 +43,7 @@ export default Schedule
 
 const ScheduleContainer = styled.div`
   width: 42.916666666666664vw;
-  height: 92.96296296296296vh;
+  min-height: 92.96296296296296vh;
   background-color: #f9f9fe;
   border-radius: 15px;
   margin: auto;
@@ -53,8 +76,9 @@ const ScheduleDate = styled.div`
 
 const ScheduleBody = styled.div`
   width: 41.5625vw;
-  height: 78.70370370370371vh;
+  min-height: 78.70370370370371vh;
   background-color: #ffffff;
   border-radius: 12px;
   margin: 1.29vh auto;
+  padding: 2.9629629629629632vh 0;
 `
