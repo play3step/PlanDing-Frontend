@@ -3,6 +3,7 @@ import CustomCalendar from './CustomCalendar'
 import { useSelector, useDispatch } from 'react-redux'
 import { setDate } from '../../redux/modules/calendar'
 import UserProfile from './UserProfile'
+import AddSchedule from './atom/AddSchedule'
 
 const SideMenu = () => {
   const dispatch = useDispatch()
@@ -19,6 +20,7 @@ const SideMenu = () => {
         value={selectedDate}
         onChange={handleDateChange}
       />
+      <AddSchedule />
     </SideMenuContainer>
   )
 }
