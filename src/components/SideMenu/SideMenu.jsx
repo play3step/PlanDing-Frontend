@@ -21,8 +21,20 @@ const SideMenu = () => {
     dispatch(setDate(newDate))
   }
   const handleSchedule = newSchedule => {
-    dispatch(addSchedule(newSchedule))
-    console.log('sdf')
+    if (
+      scheduleData.title &&
+      scheduleData.contents &&
+      scheduleData.startTime &&
+      scheduleData.endTime
+    ) {
+      dispatch(addSchedule(newSchedule))
+      setScheduleData({
+        title: '',
+        contents: '',
+        startTime: '',
+        endTime: ''
+      })
+    }
   }
   const ScheduleData = e => {
     const { name, value } = e.target
@@ -31,7 +43,7 @@ const SideMenu = () => {
       [name]: value
     })
   }
-  console.log(scheduleData)
+
   return (
     <SideMenuContainer>
       <UserProfile />
