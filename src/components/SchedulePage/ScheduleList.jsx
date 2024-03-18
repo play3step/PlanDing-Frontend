@@ -1,13 +1,15 @@
 import styled from 'styled-components'
 
-const ScheduleList = ({ time }) => {
+const ScheduleList = ({ time, title, contents }) => {
   return (
     <ListContainer>
       <ScheduleTime>{time}</ScheduleTime>
-      <ListContentsContainer>
-        <ListTitle>Title</ListTitle>
-        <ListContents>Contents</ListContents>
-      </ListContentsContainer>
+      {title && contents && (
+        <ListContentsContainer>
+          <ListTitle>{title}</ListTitle>
+          <ListContents>{contents}</ListContents>
+        </ListContentsContainer>
+      )}
     </ListContainer>
   )
 }

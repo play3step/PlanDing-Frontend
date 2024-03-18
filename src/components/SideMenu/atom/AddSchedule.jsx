@@ -1,37 +1,23 @@
-import { useState } from 'react'
 import styled from 'styled-components'
 import AddBtn from './AddBtn'
 import AddList from './AddList'
 
-const TimeList = [
-  { time: '06~09' },
-  { time: '09~12' },
-  { time: '12~15' },
-  { time: '15~18' },
-  { time: '18~21' },
-  { time: '21~24' }
-]
-
-const AddSchedule = () => {
-  const [contents, setContents] = useState('')
-  const handleContents = e => {
-    setContents(e.target.value)
-  }
+const AddSchedule = ({ onClick, onChange, scheduleData }) => {
   return (
     <AddContainer>
-      <AddBtn />
+      <AddBtn onClick={onClick} />
       <AddTextArea
-        value={contents}
-        onChange={handleContents}
+        name="contents"
+        value={scheduleData.contents}
+        onChange={onChange}
         placeholder="Wirte Your Task Detail..."
       />
+
       <TimeListContainer>
-        {TimeList.map((data, index) => (
-          <AddList
-            time={data.time}
-            key={index}
-          />
-        ))}
+        <AddList
+          scheduleData={scheduleData}
+          onChang={onChange}
+        />
       </TimeListContainer>
     </AddContainer>
   )

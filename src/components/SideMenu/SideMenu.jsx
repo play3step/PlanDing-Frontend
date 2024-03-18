@@ -4,13 +4,31 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setDate } from '../../redux/modules/calendar'
 import UserProfile from './UserProfile'
 import AddSchedule from './atom/AddSchedule'
+import { addSchedule } from '../../redux/modules/schedule'
+import { useState } from 'react'
 
 const SideMenu = () => {
   const dispatch = useDispatch()
   const selectedDate = useSelector(state => state.calendar.selectedDate)
+  const [scheduleData, setScheduleData] = useState({
+    title: '',
+    contents: '',
+    startTime: '',
+    endTime: ''
+  })
 
   const handleDateChange = newDate => {
     dispatch(setDate(newDate))
+  }
+  const handleSchedule = newSchedule => {
+    dispatch(addSchedule(newSchedule))
+  }
+  const ScheduleData = e => {
+    const { name, value } = e.target
+    setScheduleData({
+      ...scheduleData,
+      [name]: value
+    })
   }
 
   return (
@@ -20,7 +38,11 @@ const SideMenu = () => {
         value={selectedDate}
         onChange={handleDateChange}
       />
-      <AddSchedule />
+      <AddSchedule
+        onClick={handleSchedule}
+        onChange={ScheduleData}
+        scheduleData={scheduleData}
+      />
     </SideMenuContainer>
   )
 }

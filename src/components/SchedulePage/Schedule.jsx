@@ -8,13 +8,24 @@ const MySchedule = [
     time: '06:00 AM'
   },
   {
-    time: '09:00 AM'
+    time: '09:00 AM',
+    title: 'title',
+    contents: 'contents'
   },
   {
     time: '12:00 PM'
   },
   {
     time: '15:00 PM'
+  },
+  {
+    time: '18:00 PM'
+  },
+  {
+    time: '21:00 PM'
+  },
+  {
+    time: '24:00 PM'
   }
 ]
 
@@ -31,6 +42,8 @@ const Schedule = () => {
         {MySchedule.map((data, index) => (
           <ScheduleList
             time={data.time}
+            title={data.title}
+            contents={data.contents}
             key={index}
           />
         ))}
