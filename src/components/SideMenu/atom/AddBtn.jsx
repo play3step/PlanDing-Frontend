@@ -1,7 +1,7 @@
-const AddBtn = ({ onClick }) => {
+const AddBtn = ({ addList }) => {
   return (
     <button
-      onclick={onClick}
+      onClick={addList}
       style={{
         width: '13.645833333333332vw',
         height: '3.888888888888889vh',

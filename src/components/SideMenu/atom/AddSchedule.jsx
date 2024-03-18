@@ -2,10 +2,16 @@ import styled from 'styled-components'
 import AddBtn from './AddBtn'
 import AddList from './AddList'
 
-const AddSchedule = ({ onClick, onChange, scheduleData }) => {
+const AddSchedule = ({ addList, onChange, scheduleData }) => {
   return (
     <AddContainer>
-      <AddBtn onClick={onClick} />
+      <AddBtn addList={addList} />
+      <AddTitleArea
+        name="title"
+        value={scheduleData.title}
+        onChange={onChange}
+        placeholder="Title"
+      />
       <AddTextArea
         name="contents"
         value={scheduleData.contents}
@@ -39,12 +45,20 @@ const AddContainer = styled.div`
     0 3px 6px rgba(0, 0, 0, 0.16),
     0 3px 6px rgba(0, 0, 0, 0.23);
 `
+const AddTitleArea = styled.input`
+  width: 13.645833333333332vw;
+  height: 4.25925925925926vh;
+  border-radius: 6px;
+  margin-bottom: 0.3vw;
+  padding: 0.4vw;
+`
+
 const AddTextArea = styled.textarea`
   width: 13.645833333333332vw;
   height: 9.25925925925926vh;
-  border-radius: 15px;
+  border-radius: 6px;
   resize: none;
-  padding: 10px;
+  padding: 0.4vw;
   border: 1px solid #ccc;
   box-sizing: border-box;
   font-size: 0.7vw;
