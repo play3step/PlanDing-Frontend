@@ -1,20 +1,20 @@
-const USER_DATA = 'USER_DATA'
+const USER_INFO = 'USER_INFO'
 
 export const userInfo = (userName, code, profileImage) => ({
-  type: USER_DATA,
+  type: USER_INFO,
   payload: { userName, code, profileImage }
 })
 
 const initialState = {
-  users: []
+  user: null
 }
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case USER_DATA:
+    case USER_INFO:
       return {
         ...state,
-        users: [...state.users, action.payload]
+        user: action.payload
       }
     default:
       return state

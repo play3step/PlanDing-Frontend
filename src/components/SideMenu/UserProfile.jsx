@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 import DefaultProfile from '/icon/user.png'
 
-const UserProfile = ({ profileImage, name, code }) => {
+const UserProfile = ({ userInfo }) => {
+  const validUserInfo = userInfo || {}
   return (
     <Profilecontainer>
-      {profileImage ? (
+      {validUserInfo.profileImage ? (
         <ProfileImg
-          src={profileImage}
+          src={userInfo.profileImage}
           alt="Profile Image"
         />
       ) : (
@@ -16,8 +17,8 @@ const UserProfile = ({ profileImage, name, code }) => {
         />
       )}
 
-      <UserName>{name || 'User'}</UserName>
-      <UserCode>{code || '#####'}</UserCode>
+      <UserName>{validUserInfo.userName ? userInfo.userName : 'User'}</UserName>
+      <UserCode>{validUserInfo.code ? userInfo.code : '#####'}</UserCode>
     </Profilecontainer>
   )
 }

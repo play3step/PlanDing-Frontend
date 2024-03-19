@@ -10,13 +10,14 @@ import { useState } from 'react'
 const SideMenu = () => {
   const dispatch = useDispatch()
   const selectedDate = useSelector(state => state.calendar.selectedDate)
+  const userInfo = useSelector(state => state.users.user)
+
   const [scheduleData, setScheduleData] = useState({
     title: '',
     contents: '',
     startTime: '',
     endTime: ''
   })
-
   const handleDateChange = newDate => {
     dispatch(setDate(newDate))
   }
@@ -46,7 +47,7 @@ const SideMenu = () => {
 
   return (
     <SideMenuContainer>
-      <UserProfile />
+      <UserProfile userInfo={userInfo} />
       <CustomCalendar
         value={selectedDate}
         onChange={handleDateChange}
