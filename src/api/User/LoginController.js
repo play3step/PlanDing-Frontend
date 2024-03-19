@@ -1,9 +1,11 @@
 import basicApi from '../index'
 
-export const loginController = async ({ code }) => {
+export const loginController = async code => {
   try {
     const response = await basicApi.get('/api/v1/userInfo', {
-      params: { code }
+      headers: {
+        Authorization: `Bearer ${code}`
+      }
     })
     return response.data
   } catch (error) {
