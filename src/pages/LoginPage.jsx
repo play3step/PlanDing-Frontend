@@ -19,7 +19,7 @@ const LoginPage = () => {
   const handleLogin = async token => {
     try {
       const userData = await loginController(token)
-      const { username, code, profileImage } = userData
+      const { username, code, profileImage } = userData.data
 
       dispatch(userInfo(username, code, profileImage))
       navigate('/schedule')
