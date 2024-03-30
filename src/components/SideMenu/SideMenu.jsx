@@ -6,6 +6,7 @@ import UserProfile from './UserProfile'
 import AddSchedule from './atom/AddSchedule'
 import { addSchedule } from '../../redux/modules/schedule'
 import { useState } from 'react'
+import { ScheduleCreation } from '../../api/Schedule/ScheduleUpdate'
 
 const SideMenu = () => {
   const dispatch = useDispatch()
@@ -14,9 +15,13 @@ const SideMenu = () => {
 
   const [scheduleData, setScheduleData] = useState({
     title: '',
-    contents: '',
-    startTime: '',
-    endTime: ''
+    content: '',
+    startTime: {
+      hour: ''
+    },
+    endTime: {
+      hour: ''
+    }
   })
   const handleDateChange = newDate => {
     dispatch(setDate(newDate))
@@ -24,25 +29,40 @@ const SideMenu = () => {
   const handleSchedule = newSchedule => {
     if (
       scheduleData.title &&
-      scheduleData.contents &&
+      scheduleData.content &&
       scheduleData.startTime &&
       scheduleData.endTime
     ) {
+      ScheduleCreation(userInfo.token, scheduleData)
       dispatch(addSchedule(newSchedule))
       setScheduleData({
         title: '',
-        contents: '',
-        startTime: '',
-        endTime: ''
+        content: '',
+        startTime: {
+          hour: ''
+        },
+        endTime: {
+          hour: ''
+        }
       })
     }
   }
   const ScheduleData = e => {
     const { name, value } = e.target
-    setScheduleData({
-      ...scheduleData,
-      [name]: value
-    })
+    if (name === 'startTime' || name === 'endTime') {
+      setScheduleData(prevState => ({
+        ...prevState,
+        [name]: {
+          ...prevState[name],
+          hour: value
+        }
+      }))
+    } else {
+      setScheduleData(prevState => ({
+        ...prevState,
+        [name]: value
+      }))
+    }
   }
 
   return (

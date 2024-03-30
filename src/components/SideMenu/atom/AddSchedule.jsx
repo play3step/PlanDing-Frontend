@@ -13,8 +13,8 @@ const AddSchedule = ({ addList, onChange, scheduleData }) => {
         placeholder="Title"
       />
       <AddTextArea
-        name="contents"
-        value={scheduleData.contents}
+        name="content"
+        value={scheduleData.content}
         onChange={onChange}
         placeholder="Wirte Your Task Detail..."
       />

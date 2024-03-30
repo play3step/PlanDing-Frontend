@@ -29,7 +29,7 @@ const MySchedule = [
   }
 ]
 
-const Schedule = () => {
+const ScheduleDaliy = () => {
   const selectedDate = useSelector(state => state.calendar.selectedDate)
   const formattedDate = moment(selectedDate).format('MMM D, YYYY')
 
@@ -52,7 +52,7 @@ const Schedule = () => {
   )
 }
 
-export default Schedule
+export default ScheduleDaliy
 
 const ScheduleContainer = styled.div`
   width: 42.916666666666664vw;

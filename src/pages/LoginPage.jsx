@@ -21,7 +21,7 @@ const LoginPage = () => {
       const userData = await loginController(token)
       const { username, code, profileImage } = userData.data
 
-      dispatch(userInfo(username, code, profileImage))
+      dispatch(userInfo(username, code, profileImage, token))
       navigate('/schedule')
     } catch (error) {
       console.log(error)

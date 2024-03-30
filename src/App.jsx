@@ -13,6 +13,7 @@ function App() {
         display: 'flex'
       }}>
       <SideMenu />
+
       <BrowserRouter>
         <Routes>
           <Route

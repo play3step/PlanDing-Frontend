@@ -1,8 +1,8 @@
 const USER_INFO = 'USER_INFO'
 
-export const userInfo = (userName, code, profileImage) => ({
+export const userInfo = (userName, code, profileImage, token) => ({
   type: USER_INFO,
-  payload: { userName, code, profileImage }
+  payload: { userName, code, profileImage, token }
 })
 
 const initialState = {
