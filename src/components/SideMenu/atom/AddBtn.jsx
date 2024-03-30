@@ -1,27 +1,24 @@
-const AddBtn = ({ addList }) => {
+import styled from 'styled-components'
+
+const AddBtn = ({ addList, resetList, type }) => {
   return (
-    <button
-      onClick={addList}
-      style={{
-        width: '13.645833333333332vw',
-        height: '3.888888888888889vh',
-        marginBottom: '0.7vw',
-        borderRadius: '8px',
-        border: 'none',
-        boxShadow:
-          '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)'
-      }}>
-      <img
-        src="./icon/plus.png"
-        style={{
-          width: '1.3020833333333335vw',
-          height: '2.4074074074074074vh',
-          verticalAlign: 'middle',
-          marginRight: '0.5vw'
-        }}
-      />
-      Add Task
-    </button>
+    <>
+      {type === 'create' && <EventBtn onClick={addList}>Create</EventBtn>}
+      {type === 'Reset' && <EventBtn onClick={resetList}>Reset</EventBtn>}
+    </>
   )
 }
 export default AddBtn
+
+const EventBtn = styled.button`
+  width: 7.083333333333333vw;
+  height: 3.688888888888889vh;
+  margin-bottom: 0.7vw;
+  border-radius: 6px;
+  background-color: #9094fe;
+  color: white;
+  border: none;
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
+`

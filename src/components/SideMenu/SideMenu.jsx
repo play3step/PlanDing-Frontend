@@ -55,6 +55,17 @@ const SideMenu = () => {
       })
     }
   }
+
+  const handleReset = () => {
+    setScheduleData({
+      title: '',
+      content: '',
+      startTime: '',
+      endTime: '',
+      date: dayjs()
+    })
+  }
+
   const ScheduleData = e => {
     if (typeof e === 'object' && e !== null && !e.target) {
       setScheduleData(prevState => ({
@@ -78,6 +89,7 @@ const SideMenu = () => {
       />
       <AddSchedule
         addList={handleSchedule}
+        resetList={handleReset}
         onChange={ScheduleData}
         scheduleData={scheduleData}
       />

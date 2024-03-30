@@ -3,7 +3,7 @@ import AddBtn from './AddBtn'
 import AddList from './AddList'
 import ModalCalendar from './ModalCalendar'
 
-const AddSchedule = ({ addList, onChange, scheduleData }) => {
+const AddSchedule = ({ addList, resetList, onChange, scheduleData }) => {
   return (
     <AddContainer>
       <ModalCalendar
@@ -29,7 +29,20 @@ const AddSchedule = ({ addList, onChange, scheduleData }) => {
           onChang={onChange}
         />
       </TimeListContainer>
-      <AddBtn addList={addList} />
+      <div
+        style={{
+          display: 'flex',
+          gap: '1vw'
+        }}>
+        <AddBtn
+          addList={addList}
+          type="create"
+        />
+        <AddBtn
+          resetList={resetList}
+          type="Reset"
+        />
+      </div>
     </AddContainer>
   )
 }
