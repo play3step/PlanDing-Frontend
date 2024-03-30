@@ -13,56 +13,60 @@ const SideMenu = () => {
   const selectedDate = useSelector(state => state.calendar.selectedDate)
   const userInfo = useSelector(state => state.users.user)
 
+  const formatDate = date => {
+    const year = date.getFullYear()
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    const day = date.getDate().toString().padStart(2, '0')
+
+    return `${year}-${month}-${day}`
+  }
+
   const [scheduleData, setScheduleData] = useState({
     title: '',
     content: '',
-    startTime: {
-      hour: ''
-    },
-    endTime: {
-      hour: ''
-    }
+    startTime: '',
+    endTime: '',
+    date: formatDate(selectedDate)
   })
   const handleDateChange = newDate => {
     dispatch(setDate(newDate))
+    setScheduleData(prevState => ({
+      ...prevState,
+      date: formatDate(newDate)
+    }))
   }
-  const handleSchedule = newSchedule => {
+
+  const handleSchedule = () => {
     if (
       scheduleData.title &&
       scheduleData.content &&
       scheduleData.startTime &&
       scheduleData.endTime
     ) {
-      ScheduleCreation(userInfo.token, scheduleData)
-      dispatch(addSchedule(newSchedule))
+      const formattedStartTime = `${String(scheduleData.startTime).padStart(2, '0')}:00`
+      const formattedEndTime = `${String(scheduleData.endTime).padStart(2, '0')}:00`
+
+      const updatedScheduleData = {
+        ...scheduleData,
+        startTime: formattedStartTime,
+        endTime: formattedEndTime
+      }
+      ScheduleCreation(userInfo.token, updatedScheduleData)
+      dispatch(addSchedule(updatedScheduleData))
       setScheduleData({
         title: '',
         content: '',
-        startTime: {
-          hour: ''
-        },
-        endTime: {
-          hour: ''
-        }
+        startTime: '',
+        endTime: ''
       })
     }
   }
   const ScheduleData = e => {
     const { name, value } = e.target
-    if (name === 'startTime' || name === 'endTime') {
-      setScheduleData(prevState => ({
-        ...prevState,
-        [name]: {
-          ...prevState[name],
-          hour: value
-        }
-      }))
-    } else {
-      setScheduleData(prevState => ({
-        ...prevState,
-        [name]: value
-      }))
-    }
+    setScheduleData(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
   }
 
   return (

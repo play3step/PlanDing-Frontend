@@ -31,7 +31,7 @@ export default function SelectVariants({ scheduleData, onChang }) {
         <Select
           labelId="demo-simple-select-standard-label-startTime"
           id="demo-simple-select-standard-startTime"
-          value={scheduleData.startTime.hour}
+          value={scheduleData.startTime}
           name="startTime"
           onChange={onChang}
           label="startTime">
@@ -50,13 +50,13 @@ export default function SelectVariants({ scheduleData, onChang }) {
         <Select
           labelId="demo-simple-select-standard-label-endTime"
           id="demo-simple-select-standard-endTime"
-          value={scheduleData.endTime.hour}
+          value={scheduleData.endTime}
           onChange={onChang}
           name="endTime"
           label="endTime"
           disabled={!scheduleData.startTime}>
           {createTimeOptions(
-            scheduleData.startTime ? scheduleData.startTime.hour + 1 : 7,
+            scheduleData.startTime ? scheduleData.startTime + 1 : 7,
             24,
             null
           )}
