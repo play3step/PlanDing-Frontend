@@ -1,11 +1,15 @@
 import styled from 'styled-components'
 import AddBtn from './AddBtn'
 import AddList from './AddList'
+import ModalCalendar from './ModalCalendar'
 
 const AddSchedule = ({ addList, onChange, scheduleData }) => {
   return (
     <AddContainer>
-      <AddBtn addList={addList} />
+      <ModalCalendar
+        value={scheduleData.date}
+        onChange={onChange}
+      />
       <AddTitleArea
         name="title"
         value={scheduleData.title}
@@ -25,6 +29,7 @@ const AddSchedule = ({ addList, onChange, scheduleData }) => {
           onChang={onChange}
         />
       </TimeListContainer>
+      <AddBtn addList={addList} />
     </AddContainer>
   )
 }

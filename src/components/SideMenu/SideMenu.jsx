@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import CustomCalendar from './CustomCalendar'
 import { useSelector, useDispatch } from 'react-redux'
 import { setDate } from '../../redux/modules/calendar'
+import dayjs from 'dayjs'
 import UserProfile from './UserProfile'
 import AddSchedule from './atom/AddSchedule'
 import { addSchedule } from '../../redux/modules/schedule'
@@ -13,27 +14,15 @@ const SideMenu = () => {
   const selectedDate = useSelector(state => state.calendar.selectedDate)
   const userInfo = useSelector(state => state.users.user)
 
-  const formatDate = date => {
-    const year = date.getFullYear()
-    const month = (date.getMonth() + 1).toString().padStart(2, '0')
-    const day = date.getDate().toString().padStart(2, '0')
-
-    return `${year}-${month}-${day}`
-  }
-
   const [scheduleData, setScheduleData] = useState({
     title: '',
     content: '',
     startTime: '',
     endTime: '',
-    date: formatDate(selectedDate)
+    date: dayjs()
   })
   const handleDateChange = newDate => {
     dispatch(setDate(newDate))
-    setScheduleData(prevState => ({
-      ...prevState,
-      date: formatDate(newDate)
-    }))
   }
 
   const handleSchedule = () => {
@@ -41,34 +30,45 @@ const SideMenu = () => {
       scheduleData.title &&
       scheduleData.content &&
       scheduleData.startTime &&
-      scheduleData.endTime
+      scheduleData.endTime &&
+      scheduleData.date
     ) {
       const formattedStartTime = `${String(scheduleData.startTime).padStart(2, '0')}:00`
       const formattedEndTime = `${String(scheduleData.endTime).padStart(2, '0')}:00`
+      const formattedDate = `${scheduleData.date.format('YYYY-MM-DD')}`
 
       const updatedScheduleData = {
         ...scheduleData,
         startTime: formattedStartTime,
-        endTime: formattedEndTime
+        endTime: formattedEndTime,
+        date: formattedDate
       }
+
       ScheduleCreation(userInfo.token, updatedScheduleData)
       dispatch(addSchedule(updatedScheduleData))
       setScheduleData({
         title: '',
         content: '',
         startTime: '',
-        endTime: ''
+        endTime: '',
+        date: dayjs()
       })
     }
   }
   const ScheduleData = e => {
-    const { name, value } = e.target
-    setScheduleData(prevState => ({
-      ...prevState,
-      [name]: value
-    }))
+    if (typeof e === 'object' && e !== null && !e.target) {
+      setScheduleData(prevState => ({
+        ...prevState,
+        date: dayjs(e)
+      }))
+    } else if (e.target) {
+      const { name, value } = e.target
+      setScheduleData(prevState => ({
+        ...prevState,
+        [name]: value
+      }))
+    }
   }
-
   return (
     <SideMenuContainer>
       <UserProfile userInfo={userInfo} />
