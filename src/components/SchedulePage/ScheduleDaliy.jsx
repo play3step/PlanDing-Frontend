@@ -1,12 +1,8 @@
-import moment from 'moment'
-import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import ScheduleList from './ScheduleList'
 import timeUtils from '../../utils/timeUtils'
 
-const ScheduleDaliy = () => {
-  const selectedDate = useSelector(state => state.calendar.selectedDate)
-  const formattedDate = moment(selectedDate).format('MMM D, YYYY')
+const ScheduleDaliy = ({ formattedDate }) => {
   const scheduletime = timeUtils()
 
   return (

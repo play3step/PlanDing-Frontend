@@ -1,5 +1,3 @@
-import moment from 'moment'
-import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import ScheduleList from './ScheduleList'
 
@@ -27,10 +25,7 @@ const MySchedule = [
   }
 ]
 
-const ScheduleWeekly = () => {
-  const selectedDate = useSelector(state => state.calendar.selectedDate)
-  const formattedDate = moment(selectedDate).format('MMM D, YYYY')
-
+const ScheduleWeekly = ({ formattedDate }) => {
   return (
     <ScheduleContainer>
       <ScheduleHeader>

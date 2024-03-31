@@ -1,6 +1,12 @@
+const SET_DAILY_SCHEDULE = 'SET_DAILY_SCHEDULE'
 const ADD_SCHEDULE = 'ADD_SCHEDULE'
 const UPDATE_SCHEDULE = 'UPDATE_SCHEDULE'
 const DELETE_SCHEDULE = 'DELETE_SCHEDULE'
+
+export const setSchedule = schedule => ({
+  type: SET_DAILY_SCHEDULE,
+  payload: schedule
+})
 
 export const addSchedule = (startTime, endTime, title, contents) => ({
   type: ADD_SCHEDULE,
@@ -23,6 +29,11 @@ const initialState = {
 
 const scheduleReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_DAILY_SCHEDULE:
+      return {
+        ...state,
+        dailySchedule: action.payload
+      }
     case ADD_SCHEDULE:
       return {
         ...state,
