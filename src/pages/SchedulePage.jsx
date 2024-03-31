@@ -11,6 +11,7 @@ const SchedulePage = () => {
 
   const selectedDate = useSelector(state => state.calendar.selectedDate)
   const userInfo = useSelector(state => state.users.user)
+  const scheduleData = useSelector(state => state.schedule.schedules)
   const [isWeekly, setIsWeekly] = useState(false)
 
   const formattedDate = moment(selectedDate).format('MMM D, YYYY')
@@ -35,7 +36,10 @@ const SchedulePage = () => {
       {isWeekly ? (
         <ScheduleWeekly formattedDate={formattedDate} />
       ) : (
-        <ScheduleDaliy formattedDate={formattedDate} />
+        <ScheduleDaliy
+          formattedDate={formattedDate}
+          scheduleData={scheduleData}
+        />
       )}
     </>
   )

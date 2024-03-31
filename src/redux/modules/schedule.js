@@ -32,7 +32,7 @@ const scheduleReducer = (state = initialState, action) => {
     case SET_DAILY_SCHEDULE:
       return {
         ...state,
-        dailySchedule: action.payload
+        schedules: action.payload
       }
     case ADD_SCHEDULE:
       return {

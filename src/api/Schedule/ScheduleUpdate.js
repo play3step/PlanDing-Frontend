@@ -24,7 +24,8 @@ export const scheduleDaily = (token, date) => async dispatch => {
         Authorization: `Bearer ${token}`
       }
     })
-    dispatch(setSchedule(response))
+
+    dispatch(setSchedule(response.data))
     return response.data
   } catch (error) {
     console.error('Error fetching posts:', error)
