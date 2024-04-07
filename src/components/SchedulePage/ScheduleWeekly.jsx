@@ -1,38 +1,17 @@
 import styled from 'styled-components'
 import ScheduleList from './ScheduleList'
+import timeUtils from '../../utils/timeUtils'
 
-const MySchedule = [
-  {
-    time: '06:00 AM'
-  },
-  {
-    time: '09:00 AM'
-  },
-  {
-    time: '12:00 PM'
-  },
-  {
-    time: '15:00 PM'
-  },
-  {
-    time: '18:00 PM'
-  },
-  {
-    time: '21:00 PM'
-  },
-  {
-    time: '24:00 PM'
-  }
-]
+const ScheduleDaliy = ({ formattedDate }) => {
+  const scheduletime = timeUtils()
 
-const ScheduleWeekly = ({ formattedDate }) => {
   return (
     <ScheduleContainer>
       <ScheduleHeader>
         <ScheduleDate>{formattedDate}</ScheduleDate>
       </ScheduleHeader>
       <ScheduleBody>
-        {MySchedule.map((data, index) => (
+        {scheduletime.map((data, index) => (
           <ScheduleList
             time={data.time}
             title={data.title}
@@ -45,7 +24,7 @@ const ScheduleWeekly = ({ formattedDate }) => {
   )
 }
 
-export default ScheduleWeekly
+export default ScheduleDaliy
 
 const ScheduleContainer = styled.div`
   width: 42.916666666666664vw;
