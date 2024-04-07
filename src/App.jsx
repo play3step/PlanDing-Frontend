@@ -5,6 +5,7 @@ import SideMenu from './components/SideMenu/SideMenu'
 import SchedulePage from './pages/SchedulePage'
 import RouterBtn from './components/atom/RouterBtn'
 import LoginPage from './pages/LoginPage'
+import ScheduleListPage from './pages/ScheduleListPage'
 
 function App() {
   return (
@@ -25,7 +26,11 @@ function App() {
             element={<LoginPage />}
           />
           <Route
-            path="/schedule"
+            path="/Schedule"
+            element={<ScheduleListPage />}
+          />
+          <Route
+            path="/schedule/:id"
             element={<SchedulePage />}
           />
         </Routes>

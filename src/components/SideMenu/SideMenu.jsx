@@ -5,7 +5,7 @@ import { setDate } from '../../redux/modules/calendar'
 import dayjs from 'dayjs'
 import UserProfile from './UserProfile'
 import AddSchedule from './atom/AddSchedule'
-import { addSchedule } from '../../redux/modules/schedule'
+import { addSchedule } from '../../redux/modules/schedule/scheduleUpdate'
 import { useState } from 'react'
 import { ScheduleCreation } from '../../api/Schedule/ScheduleUpdate'
 

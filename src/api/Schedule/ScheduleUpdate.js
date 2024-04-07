@@ -1,4 +1,4 @@
-import { setSchedule } from '../../redux/modules/schedule'
+import { setSchedule } from '../../redux/modules/schedule/scheduleUpdate'
 import basicApi from '../index'
 
 export const ScheduleCreation = async (token, scheduleData) => {

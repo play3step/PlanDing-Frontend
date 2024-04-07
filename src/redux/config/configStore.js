@@ -1,13 +1,15 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import calendarReducer from '../modules/calendar'
-import scheduleReducer from '../modules/schedule'
+import scheduleReducer from '../modules/schedule/scheduleUpdate'
 import userReducer from '../modules/user'
 import { thunk } from 'redux-thunk'
+import groupReducer from '../modules/schedule/scheduleList'
 
 const rootReducer = combineReducers({
   calendar: calendarReducer,
   schedule: scheduleReducer,
-  users: userReducer
+  users: userReducer,
+  group: groupReducer
 })
 
 const store = createStore(
