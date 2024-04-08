@@ -28,6 +28,7 @@ const ScheduleListPage = () => {
           <ScheduleBox
             key={data.id}
             title={data.title}
+            code={data.code}
           />
         ))}
       </GroupListContainer>

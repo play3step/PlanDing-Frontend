@@ -30,7 +30,7 @@ function App() {
             element={<ScheduleListPage />}
           />
           <Route
-            path="/schedule/:id"
+            path="/schedule/group/:code"
             element={<SchedulePage />}
           />
         </Routes>

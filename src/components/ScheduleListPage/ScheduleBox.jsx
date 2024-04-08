@@ -1,8 +1,13 @@
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 
-const ScheduleBox = ({ title }) => {
+const ScheduleBox = ({ title, code }) => {
+  const nav = useNavigate()
   return (
-    <AddContainer>
+    <AddContainer
+      onClick={() => {
+        nav(`group/${code}`)
+      }}>
       <AddImg />
       <p>{title}</p>
     </AddContainer>
