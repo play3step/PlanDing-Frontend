@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-const ScheduleAdd = () => {
+const ScheduleAdd = ({ AddGroup }) => {
   return (
-    <AddContainer>
+    <AddContainer onClick={AddGroup}>
       <AddImg />
     </AddContainer>
   )

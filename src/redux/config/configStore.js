@@ -3,13 +3,13 @@ import calendarReducer from '../modules/calendar'
 import scheduleReducer from '../modules/schedule/scheduleUpdate'
 import userReducer from '../modules/user'
 import { thunk } from 'redux-thunk'
-import groupReducer from '../modules/schedule/scheduleList'
+import groupReducer from '../modules/schedule/scheduleGroup'
 
 const rootReducer = combineReducers({
   calendar: calendarReducer,
   schedule: scheduleReducer,
   users: userReducer,
-  group: groupReducer
+  groups: groupReducer
 })
 
 const store = createStore(
