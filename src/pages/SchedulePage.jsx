@@ -1,34 +1,84 @@
-import { useEffect } from 'react'
-
-import ScheduleWeekly from '../components/SchedulePage/ScheduleWeekly'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import moment from 'moment'
-import { scheduleDaily } from '../api/Schedule/ScheduleUpdate'
+import { useParams } from 'react-router-dom'
+import { Client } from '@stomp/stompjs'
+
+const WEBSOCKET_URL = import.meta.env.VITE_VIEW_WEBSOCKET_URL
 
 const SchedulePage = () => {
-  const dispatch = useDispatch()
-
-  const selectedDate = useSelector(state => state.calendar.selectedDate)
+  const [client, setClient] = useState(null)
+  const [receivedMessages, setReceivedMessages] = useState([])
   const userInfo = useSelector(state => state.users.user)
-  const scheduleData = useSelector(state => state.schedule.schedules)
-
-  const formattedDate = moment(selectedDate).format('MMM D, YYYY')
-
+  const selectedDate = useSelector(state => state.calendar.selectedDate)
+  const { code } = useParams()
+  const formattedDate = moment(selectedDate).format('YYYY-MM-DD')
   useEffect(() => {
-    if (userInfo && selectedDate) {
-      dispatch(
-        scheduleDaily(userInfo.token, moment(selectedDate).format('YYYY-MM-DD'))
-      )
+    const stompClient = new Client({
+      brokerURL: WEBSOCKET_URL,
+      reconnectDelay: 5000,
+      onConnect: () => {
+        console.log('Connected!')
+
+        stompClient.subscribe(
+          `/sub/schedule/${code}`,
+          message => {
+            const messageBody = JSON.parse(message.body)
+            setReceivedMessages(prevMessages => [...prevMessages, messageBody])
+            console.log('Received message:', messageBody)
+          },
+          { Authorization: `Bearer ${userInfo?.token}` }
+        )
+      },
+      onStompError: frame => {
+        console.error('Broker reported error: ' + frame.headers['message'])
+        console.error('Additional details: ' + frame.body)
+      }
+    })
+
+    stompClient.activate()
+    setClient(stompClient)
+
+    return () => {
+      stompClient.deactivate()
     }
-  }, [selectedDate, userInfo, dispatch])
+  }, [userInfo, code, formattedDate])
+
+  const sendMessage = () => {
+    if (client && client.active) {
+      const message = {
+        title: 'title',
+        content: 'content',
+        date: formattedDate,
+        startTime: '07:00',
+        endTime: '08:00'
+      }
+
+      client.publish({
+        destination: `/pub/schedule/${code}`,
+        headers: { Authorization: `Bearer ${userInfo?.token}` },
+        body: JSON.stringify(message)
+      })
+      console.log('Sent message:', message)
+    } else {
+      console.error('Client is not connected.')
+    }
+  }
 
   return (
-    <>
-      <ScheduleWeekly
-        formattedDate={formattedDate}
-        scheduleData={scheduleData}
-      />
-    </>
+    <div>
+      <div>
+        <h2>Received Messages:</h2>
+        <ul>
+          {receivedMessages.map((msg, index) => (
+            <li key={index}>
+              <pre>{JSON.stringify(msg, null, 2)}</pre>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <button onClick={sendMessage}>Send Message</button>
+    </div>
   )
 }
 
