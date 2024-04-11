@@ -47,9 +47,10 @@ const SchedulePage = () => {
   const sendMessage = () => {
     if (client && client.active) {
       const message = {
+        userId: 1,
         title: 'title',
         content: 'content',
-        date: formattedDate,
+        scheduleDate: formattedDate,
         startTime: '07:00',
         endTime: '08:00'
       }
