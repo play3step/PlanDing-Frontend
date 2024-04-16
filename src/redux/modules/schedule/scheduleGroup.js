@@ -12,7 +12,9 @@ export const addGroup = title => ({
 })
 
 const initialState = {
-  groups: []
+  groups: {
+    data: []
+  }
 }
 
 const groupReducer = (state = initialState, action) => {
@@ -25,7 +27,9 @@ const groupReducer = (state = initialState, action) => {
     case ADD_GROUP:
       return {
         ...state,
-        groups: [...state.groups, action.payload]
+        groups: {
+          data: [...state.groups.data, action.payload]
+        }
       }
     default:
       return state

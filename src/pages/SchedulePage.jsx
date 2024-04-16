@@ -19,7 +19,6 @@ const SchedulePage = () => {
       reconnectDelay: 5000,
       onConnect: () => {
         console.log('Connected!')
-
         stompClient.subscribe(
           `/sub/schedule/${code}`,
           message => {

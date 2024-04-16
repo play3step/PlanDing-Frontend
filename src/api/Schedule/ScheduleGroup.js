@@ -28,6 +28,7 @@ export const addGroupList = token => async dispatch => {
         }
       }
     )
+
     dispatch(addGroup(response.data))
     return response.data
   } catch (error) {

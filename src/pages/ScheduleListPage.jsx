@@ -18,12 +18,12 @@ const ScheduleListPage = () => {
   const AddGroup = () => {
     dispatch(addGroupList(userInfo.token))
   }
+
   console.log(groupList)
   return (
     <>
       <GroupListContainer>
         <ScheduleAdd AddGroup={AddGroup} />
-
         {groupList.data?.map(data => (
           <ScheduleBox
             key={data.id}
