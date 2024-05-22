@@ -11,7 +11,7 @@ export const VITE_SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 const actions = [
   { icon: <HomeIcon />, name: 'Home', route: '/' },
-  { icon: <LoginIcon />, name: 'Login', route: 'KAKAO_LOGIN' },
+  { icon: <LoginIcon />, name: 'Login', route: 'login' },
   { icon: <ScheduleIcon />, name: 'Schedule', route: '/schedule' },
   { icon: <ChatIcon />, name: 'Chat', route: '/chat' }
 ]

@@ -4,6 +4,7 @@ import MainPage from './pages/MainPage'
 import SideMenu from './components/SideMenu/SideMenu'
 import SchedulePage from './pages/SchedulePage'
 import RouterBtn from './components/atom/RouterBtn'
+import LoginProgressPage from './pages/LoginProgressPage'
 import LoginPage from './pages/LoginPage'
 import ScheduleListPage from './pages/ScheduleListPage'
 
@@ -13,9 +14,9 @@ function App() {
       style={{
         display: 'flex'
       }}>
-      <SideMenu />
-
       <BrowserRouter>
+        <SideMenu />
+
         <Routes>
           <Route
             path="/"
@@ -24,6 +25,10 @@ function App() {
           <Route
             path="/Login"
             element={<LoginPage />}
+          />
+          <Route
+            path="/LoginProgressPage"
+            element={<LoginProgressPage />}
           />
           <Route
             path="/Schedule"

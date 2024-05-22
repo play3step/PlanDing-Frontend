@@ -8,11 +8,15 @@ import AddSchedule from './atom/AddSchedule'
 import { addSchedule } from '../../redux/modules/schedule/scheduleUpdate'
 import { useState } from 'react'
 import { ScheduleCreation } from '../../api/Schedule/ScheduleUpdate'
+import { useLocation } from 'react-router-dom'
 
 const SideMenu = () => {
   const dispatch = useDispatch()
   const selectedDate = useSelector(state => state.calendar.selectedDate)
   const userInfo = useSelector(state => state.users.user)
+
+  const location = useLocation()
+  const shouldShow = ['/'].includes(location.pathname)
 
   const [scheduleData, setScheduleData] = useState({
     title: '',
@@ -23,6 +27,9 @@ const SideMenu = () => {
   })
   const handleDateChange = newDate => {
     dispatch(setDate(newDate))
+  }
+  if (!shouldShow) {
+    return null
   }
 
   const handleSchedule = () => {
