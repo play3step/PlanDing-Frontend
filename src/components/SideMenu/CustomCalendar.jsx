@@ -1,18 +1,17 @@
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import styled from '@emotion/styled'
-import moment from 'moment'
 
 const CustomCalendar = ({ value, onChange }) => {
-  const formattedDate = moment(value).format('YYYY년 MM월 DD일')
   return (
     <>
-      <DropdownButton>{formattedDate}</DropdownButton>
       <CalendarWrapper>
         <Calendar
           calendarType="US"
           onChange={onChange}
-          value={value}></Calendar>
+          value={value}
+          formatDay={(locale, date) => date.getDate()}
+        />
       </CalendarWrapper>
     </>
   )
@@ -20,46 +19,89 @@ const CustomCalendar = ({ value, onChange }) => {
 
 export default CustomCalendar
 
-const DropdownButton = styled.button`
-  width: 8.427083333333334vw;
-  height: 3.7962962962962963vh;
-  border: none;
-  border-radius: 15px;
-  padding: 0px 12px;
-  color: var(--festie-gray-800, #3a3a3a);
-  font-size: 0.625vw;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 140%;
-  text-align: center;
-  appearance: none;
-  background-color: #ffffff;
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 12px;
-  margin-bottom: 1.9444444444444444vh;
-  box-shadow:
-    0 3px 6px rgba(0, 0, 0, 0.16),
-    0 3px 6px rgba(0, 0, 0, 0.23);
-`
-
 const CalendarWrapper = styled.div`
   .react-calendar {
-    width: 17.1875vw;
+    width: 14.583333333333334vw;
+    height: 25.925925925925924vh;
+    border: none;
+    border-radius: 10px;
+    background-color: #f0f4ff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    font-family: 'Arial, sans-serif';
   }
 
-  .react-calendar__tile {
-    font-size: 0.7vw;
+  .react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
   }
 
   .react-calendar__navigation button {
-    font-size: 1vw;
+    color: #1d3557;
+    background: none;
+    border: none;
+    font-size: 0.6rem;
+    font-weight: bold;
+    padding: 0.2rem;
+    cursor: pointer;
   }
-  /* .react-calendar__tile--now {
-    background: #9da2ff;
+
+  .react-calendar__navigation__label {
+    font-size: 0.8rem;
+  }
+
+  .react-calendar__month-view__weekdays {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #1d3557;
+    margin-bottom: 0.3rem;
+  }
+
+  .react-calendar__month-view__weekdays__weekday {
+    padding: 0.1rem 0;
+  }
+
+  .react-calendar__tile {
+    max-width: 100%;
+    padding: 0.1rem;
+    background: none;
+    border: none;
+    font-size: 0.7rem;
+    color: #1d3557;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .react-calendar__tile--now {
+    background: #a8dadc;
+    color: #1d3557;
+    border-radius: 5px;
+  }
+
+  .react-calendar__tile--active {
+    background: #457b9d;
     color: white;
-  } */
-  box-shadow:
-    0 3px 6px rgba(0, 0, 0, 0.16),
-    0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 5px;
+  }
+
+  .react-calendar__tile--active:enabled:hover,
+  .react-calendar__tile--active:enabled:focus {
+    background: #1d3557;
+  }
+
+  .react-calendar__tile:enabled:hover,
+  .react-calendar__tile:enabled:focus {
+    background: #a8dadc;
+  }
+
+  .react-calendar__tile--weekend {
+    color: #e63946;
+  }
+
+  .react-calendar__tile--neighboringMonth {
+    color: #c0c0c0;
+  }
 `

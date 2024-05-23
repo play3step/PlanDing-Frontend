@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
-import MainPage from './pages/MainPage'
-import SideMenu from './components/SideMenu/SideMenu'
+
 import SchedulePage from './pages/SchedulePage'
 import RouterBtn from './components/atom/RouterBtn'
 import LoginProgressPage from './pages/LoginProgressPage'
 import LoginPage from './pages/LoginPage'
 import ScheduleListPage from './pages/ScheduleListPage'
+import MainPage from './pages/MainPage'
 
 function App() {
   return (
@@ -15,21 +15,19 @@ function App() {
         display: 'flex'
       }}>
       <BrowserRouter>
-        <SideMenu />
-
         <Routes>
           <Route
             path="/"
-            element={<MainPage />}
-          />
-          <Route
-            path="/Login"
             element={<LoginPage />}
           />
           <Route
-            path="/LoginProgressPage"
+            path="/Login"
             element={<LoginProgressPage />}
           />
+          <Route
+            path="/main"
+            element={<MainPage />}
+          />{' '}
           <Route
             path="/Schedule"
             element={<ScheduleListPage />}

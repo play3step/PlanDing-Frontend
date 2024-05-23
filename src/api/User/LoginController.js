@@ -2,7 +2,7 @@ import basicApi from '../index'
 
 export const loginController = async token => {
   try {
-    const response = await basicApi.get('/api/v1/userInfo', {
+    const response = await basicApi.get('/api/v1/profile', {
       headers: {
         Authorization: `Bearer ${token}`
       }

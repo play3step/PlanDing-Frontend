@@ -28,7 +28,7 @@ const SideMenu = () => {
   const handleDateChange = newDate => {
     dispatch(setDate(newDate))
   }
-  if (!shouldShow) {
+  if (shouldShow) {
     return null
   }
 

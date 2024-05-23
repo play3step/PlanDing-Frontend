@@ -22,7 +22,7 @@ const LoginPage = () => {
       const { username, code, profileImage } = userData.data
 
       dispatch(userInfo(username, code, profileImage, token))
-      navigate('/schedule')
+      navigate('/main')
     } catch (error) {
       console.log(error)
     }
