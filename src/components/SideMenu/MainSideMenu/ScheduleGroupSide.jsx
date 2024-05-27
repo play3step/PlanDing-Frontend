@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const ScheduleGroupSide = () => {
-  return <Container>ㅁㄴㅇ</Container>
+  return <Container></Container>
 }
 
 export default ScheduleGroupSide

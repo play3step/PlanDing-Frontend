@@ -12,7 +12,7 @@ const LogoutBtn = () => {
         fontSize: '0.8vw',
         boxShadow:
           '0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
-        marginLeft: '6vw'
+        marginLeft: '3vw'
       }}>
       로그아웃
     </button>

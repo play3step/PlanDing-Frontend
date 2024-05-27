@@ -23,10 +23,9 @@ const CalendarWrapper = styled.div`
   .react-calendar {
     width: 14.583333333333334vw;
     height: 25.925925925925924vh;
-    border: none;
-    border-radius: 10px;
-    background-color: #f0f4ff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #5f64d9;
+    background-color: #ffffff;
+    border-radius: 4px;
     padding: 1rem;
     font-family: 'Arial, sans-serif';
   }

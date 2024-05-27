@@ -23,8 +23,8 @@ const ProfileBox = () => {
 export default ProfileBox
 
 const Container = styled.div`
-  width: 20.833333333333336vw;
-  height: 12.962962962962962vh;
+  width: 16.666666666666664vw;
+  height: 15vh;
   background-color: #fbfbfb;
   padding: 1.0416666666666665vw;
 `
@@ -41,7 +41,7 @@ const ProfileImage = styled.img`
 
 const UserName = styled.p`
   font-size: 0.9375vw;
-  margin-left: 1vw;
+  margin-left: 0.4vw;
 `
 const UserCode = styled.p`
   font-size: 0.8333333333333334vw;

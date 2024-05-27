@@ -24,9 +24,11 @@ export default ScheduleEventSide
 
 const Container = styled.div`
   width: 16.666666666666664vw;
-  height: 83.33333333333334vh;
-  background-color: #c6c9ff;
+  height: 79.44444444444444vh;
+  background-color: #ffffff;
   display: flex;
+  padding: 1.0416666666666665vw;
   flex-direction: column;
   align-items: center;
+  margin-top: 1.8518518518518516vh;
 `

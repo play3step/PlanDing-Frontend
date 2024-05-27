@@ -19,7 +19,8 @@ export default TodayEvent
 const Container = styled.div`
   width: 14.583333333333334vw;
   height: 32.592592592592595vh;
-  background-color: #e7e7fe;
+  border: 1px solid #5f64d9;
+  border-radius: 4px;
   padding: 1.0416666666666665vw;
   margin-top: 2vw;
 `
