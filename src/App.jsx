@@ -7,6 +7,7 @@ import LoginProgressPage from './pages/LoginProgressPage'
 import LoginPage from './pages/LoginPage'
 import ScheduleListPage from './pages/ScheduleListPage'
 import MainPage from './pages/MainPage'
+import CreactGroupModal from './components/Modal/CreactGroupModal'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         display: 'flex'
       }}>
       <BrowserRouter>
+        <CreactGroupModal />
         <Routes>
           <Route
             path="/"

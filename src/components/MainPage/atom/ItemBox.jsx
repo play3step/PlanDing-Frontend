@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-const ItemBox = ({ type }) => {
+const ItemBox = ({ type, onClick }) => {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <ItemImg type={type} />
       <ItemText>{(type = 'Add' && '스케줄 생성')}</ItemText>
     </Container>

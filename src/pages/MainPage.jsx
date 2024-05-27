@@ -3,8 +3,21 @@ import ListContainer from '../components/MainPage/ListContainer'
 import ScheduleEventSide from '../components/SideMenu/MainSideMenu/ScheduleEventSide'
 import ScheduleGroupSide from '../components/SideMenu/MainSideMenu/ScheduleGroupSide'
 import ProfileBox from '../components/SideMenu/MainSideMenu/ProfileBox'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { setGroupList } from '../api/Schedule/ScheduleGroup'
 
 const MainPage = () => {
+  const dispatch = useDispatch()
+  const userInfo = useSelector(state => state.users)
+  const groupList = useSelector(state => state.groups.groups)
+
+  useEffect(() => {
+    if (userInfo) {
+      dispatch(setGroupList(userInfo.user.token))
+    }
+  }, [userInfo, dispatch])
+
   return (
     <div
       style={{
@@ -16,7 +29,7 @@ const MainPage = () => {
         <ScheduleGroupSide />
       </LeftPostion>
       <MiddlePostion>
-        <ListContainer />
+        <ListContainer groupList={groupList} />
       </MiddlePostion>
       <RightPostion>
         <ProfileBox />

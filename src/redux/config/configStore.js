@@ -4,12 +4,14 @@ import scheduleReducer from '../modules/schedule/scheduleUpdate'
 import userReducer from '../modules/user'
 import { thunk } from 'redux-thunk'
 import groupReducer from '../modules/schedule/scheduleGroup'
+import createModalReducer from '../modules/modal/createGroup'
 
 const rootReducer = combineReducers({
   calendar: calendarReducer,
   schedule: scheduleReducer,
   users: userReducer,
-  groups: groupReducer
+  groups: groupReducer,
+  createModal: createModalReducer
 })
 
 const store = createStore(

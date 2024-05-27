@@ -1,7 +1,13 @@
 import styled from 'styled-components'
 import ItemBox from './atom/ItemBox'
+import { useDispatch } from 'react-redux'
+import { openCreateModal } from '../../redux/modules/modal/createGroup'
 
 const ListContainer = () => {
+  const dispatch = useDispatch()
+  const openModal = () => {
+    dispatch(openCreateModal())
+  }
   return (
     <Container>
       <LineWrapper>
@@ -10,7 +16,10 @@ const ListContainer = () => {
       <ItemContainer>
         <IndividualContainer>
           <SubTitle>My Plan</SubTitle>
-          <ItemBox type="Add" />
+          <ItemBox
+            type="Add"
+            onClick={openModal}
+          />
         </IndividualContainer>
         <LineWrapperTwo>
           <Line />

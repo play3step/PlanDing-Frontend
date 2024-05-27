@@ -4,7 +4,6 @@ import LogoutBtn from './atom/LogoutBtn'
 
 const ProfileBox = () => {
   const userInfo = useSelector(state => state.users.user)
-  console.log(userInfo)
 
   return (
     <Container>
