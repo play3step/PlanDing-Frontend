@@ -8,7 +8,7 @@ function CreactGroupModal() {
   const dispatch = useDispatch()
   const userInfo = useSelector(state => state.users)
   const { isOpen } = useSelector(state => state.createModal)
-
+  console.log(userInfo)
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [file, setFile] = useState(null)

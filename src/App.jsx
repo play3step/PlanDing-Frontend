@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage'
 import ScheduleListPage from './pages/ScheduleListPage'
 import MainPage from './pages/MainPage'
 import CreactGroupModal from './components/Modal/CreactGroupModal'
+import MyProfilePage from './pages/MyProfilePage'
 
 function App() {
   return (
@@ -29,13 +30,21 @@ function App() {
           <Route
             path="/main"
             element={<MainPage />}
-          />{' '}
+          />
+          <Route
+            path="/profile"
+            element={<MyProfilePage />}
+          />
           <Route
             path="/Schedule"
             element={<ScheduleListPage />}
           />
           <Route
             path="/schedule/group/:code"
+            element={<SchedulePage />}
+          />
+          <Route
+            path="/schedule/Personal"
             element={<SchedulePage />}
           />
         </Routes>

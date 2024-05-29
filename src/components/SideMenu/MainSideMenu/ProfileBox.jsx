@@ -2,12 +2,12 @@ import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import LogoutBtn from './atom/LogoutBtn'
 
-const ProfileBox = () => {
+const ProfileBox = ({ profileHandler }) => {
   const userInfo = useSelector(state => state.users.user)
 
   return (
     <Container>
-      <InfoBox>
+      <InfoBox onClick={profileHandler}>
         <ProfileImage
           src={userInfo.profileImage}
           alt="사용자 프로필"

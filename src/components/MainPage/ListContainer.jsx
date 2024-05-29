@@ -2,8 +2,10 @@ import styled from 'styled-components'
 import ItemBox from './atom/ItemBox'
 import { useDispatch } from 'react-redux'
 import { openCreateModal } from '../../redux/modules/modal/createGroup'
+import { useNavigate } from 'react-router-dom'
 
 const ListContainer = () => {
+  const nav = useNavigate()
   const dispatch = useDispatch()
   const openModal = () => {
     dispatch(openCreateModal())
@@ -18,7 +20,9 @@ const ListContainer = () => {
           <SubTitle>My Plan</SubTitle>
           <ItemBox
             type="Add"
-            onClick={openModal}
+            onClick={() => {
+              nav(`/schedule/Personal`)
+            }}
           />
         </IndividualContainer>
         <LineWrapperTwo>
@@ -26,7 +30,10 @@ const ListContainer = () => {
         </LineWrapperTwo>
         <GroupContainer>
           <SubTitle>Team Plan</SubTitle>
-          <ItemBox type="Add" />
+          <ItemBox
+            type="Add"
+            onClick={openModal}
+          />
         </GroupContainer>
       </ItemContainer>
     </Container>
@@ -38,7 +45,6 @@ const Container = styled.div`
   width: 56.35416666666667vw;
   height: 96.29629629629629vh;
   background-color: #ffffff;
-  margin-left: 1vw;
   display: flex;
   flex-direction: column;
   align-items: center;
