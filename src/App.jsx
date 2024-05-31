@@ -44,7 +44,7 @@ function App() {
             element={<SchedulePage />}
           />
           <Route
-            path="/schedule/Personal"
+            path="/schedule/personal"
             element={<SchedulePage />}
           />
         </Routes>

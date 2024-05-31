@@ -21,7 +21,7 @@ const ListContainer = () => {
           <ItemBox
             type="Add"
             onClick={() => {
-              nav(`/schedule/Personal`)
+              nav(`/schedule/personal`)
             }}
           />
         </IndividualContainer>

@@ -4,11 +4,11 @@ import styled from 'styled-components'
 import { closeCreateModal } from '../../redux/modules/modal/createGroup'
 import { addGroupList } from '../../api/Schedule/ScheduleGroup'
 
-function CreactGroupModal() {
+function CreateGroupModal() {
   const dispatch = useDispatch()
-  const userInfo = useSelector(state => state.users)
+  const userInfo = useSelector(state => state.users.user)
   const { isOpen } = useSelector(state => state.createModal)
-  console.log(userInfo)
+
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [file, setFile] = useState(null)
@@ -18,12 +18,11 @@ function CreactGroupModal() {
   const handleSubmit = async () => {
     if (file) {
       try {
-        await dispatch(
-          addGroupList(userInfo.user.token, title, description, file)
-        )
+        await dispatch(addGroupList(userInfo.token, title, description, file))
         dispatch(closeCreateModal())
         setTitle('')
         setDescription('')
+        setFile(null)
       } catch (error) {
         console.error('Failed to create group:', error)
       }
@@ -31,6 +30,7 @@ function CreactGroupModal() {
       console.warn('No file selected')
     }
   }
+
   const closeModal = () => {
     dispatch(closeCreateModal())
   }
@@ -75,7 +75,7 @@ function CreactGroupModal() {
   )
 }
 
-export default CreactGroupModal
+export default CreateGroupModal
 
 const ModalBackdrop = styled.div`
   position: fixed;
