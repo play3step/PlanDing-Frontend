@@ -4,12 +4,13 @@ import { useDispatch } from 'react-redux'
 import { openCreateModal } from '../../redux/modules/modal/createGroup'
 import { useNavigate } from 'react-router-dom'
 
-const ListContainer = () => {
+const ListContainer = ({ groupList }) => {
   const nav = useNavigate()
   const dispatch = useDispatch()
   const openModal = () => {
     dispatch(openCreateModal())
   }
+  console.log(groupList)
   return (
     <Container>
       <LineWrapper>
@@ -28,12 +29,21 @@ const ListContainer = () => {
         <LineWrapperTwo>
           <Line />
         </LineWrapperTwo>
+        <SubTitle>Team Plan</SubTitle>
+
         <GroupContainer>
-          <SubTitle>Team Plan</SubTitle>
           <ItemBox
             type="Add"
             onClick={openModal}
           />
+          {groupList.data?.map(data => (
+            <ItemBox
+              key={data.id}
+              title={data.name}
+              code={data.code}
+              thumbnailPath={data.thumbnailPath}
+            />
+          ))}
         </GroupContainer>
       </ItemContainer>
     </Container>
@@ -85,4 +95,10 @@ const IndividualContainer = styled.div`
 const GroupContainer = styled.div`
   width: 52.083333333333336vw;
   height: 39vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1vw;
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `

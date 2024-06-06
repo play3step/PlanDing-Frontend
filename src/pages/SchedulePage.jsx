@@ -46,7 +46,7 @@ const SchedulePage = () => {
   const sendMessage = () => {
     if (client && client.active) {
       const message = {
-        userId: 1,
+        userCode: 1,
         title: 'title',
         content: 'content',
         scheduleDate: formattedDate,
@@ -56,7 +56,10 @@ const SchedulePage = () => {
 
       client.publish({
         destination: `/pub/schedule/${code}`,
-        headers: { Authorization: `Bearer ${userInfo?.token}` },
+        headers: {
+          Authorization: `Bearer ${userInfo?.token}`,
+          groupCode: code
+        },
         body: JSON.stringify(message)
       })
       console.log('Sent message:', message)
@@ -64,7 +67,6 @@ const SchedulePage = () => {
       console.error('Client is not connected.')
     }
   }
-
   return (
     <div>
       <div>

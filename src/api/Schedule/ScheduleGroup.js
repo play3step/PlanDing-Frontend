@@ -22,12 +22,11 @@ export const addGroupList =
     try {
       const formData = new FormData()
 
-      let variables = [
-        {
-          name: title,
-          description: description
-        }
-      ]
+      let variables = {
+        name: title,
+        description: description
+      }
+
       formData.append(
         'request',
         new Blob([JSON.stringify(variables)], { type: 'application/json' })

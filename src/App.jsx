@@ -40,9 +40,10 @@ function App() {
             element={<ScheduleListPage />}
           />
           <Route
-            path="/schedule/group/:code"
+            path="/group/:code"
             element={<SchedulePage />}
           />
+
           <Route
             path="/schedule/personal"
             element={<SchedulePage />}
