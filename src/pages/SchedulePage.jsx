@@ -13,6 +13,7 @@ const SchedulePage = () => {
   const selectedDate = useSelector(state => state.calendar.selectedDate)
   const { code } = useParams()
   const formattedDate = moment(selectedDate).format('YYYY-MM-DD')
+
   useEffect(() => {
     const stompClient = new Client({
       brokerURL: WEBSOCKET_URL,
@@ -46,12 +47,12 @@ const SchedulePage = () => {
   const sendMessage = () => {
     if (client && client.active) {
       const message = {
-        userCode: 1,
+        userCode: userInfo.userCode,
         title: 'title',
         content: 'content',
         scheduleDate: formattedDate,
-        startTime: '07:00',
-        endTime: '08:00'
+        startTime: 7,
+        endTime: 8
       }
 
       client.publish({

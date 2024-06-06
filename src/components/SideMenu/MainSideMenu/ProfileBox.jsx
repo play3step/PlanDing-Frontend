@@ -13,7 +13,7 @@ const ProfileBox = ({ profileHandler }) => {
           alt="사용자 프로필"
         />
         <UserName>{userInfo.userName}</UserName>
-        <UserCode>{userInfo.code ?? '#xxxx'}</UserCode>
+        <UserCode>{userInfo.userCode ?? '#xxxx'}</UserCode>
         <LogoutBtn />
       </InfoBox>
     </Container>
@@ -44,5 +44,5 @@ const UserName = styled.p`
 `
 const UserCode = styled.p`
   font-size: 0.8333333333333334vw;
-  margin-left: 0.4vw;
+  margin-left: 0.2vw;
 `

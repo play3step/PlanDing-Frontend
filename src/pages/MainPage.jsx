@@ -16,7 +16,7 @@ const MainPage = () => {
   const dispatch = useDispatch()
   const userInfo = useSelector(state => state.users.user)
   const groupList = useSelector(state => state.groups.groups)
-  console.log(userInfo)
+
   useEffect(() => {
     if (userInfo) {
       dispatch(setGroupList(userInfo.token))

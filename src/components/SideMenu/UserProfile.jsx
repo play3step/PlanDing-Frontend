@@ -18,7 +18,9 @@ const UserProfile = ({ userInfo }) => {
       )}
 
       <UserName>{validUserInfo.userName ? userInfo.userName : 'User'}</UserName>
-      <UserCode>{validUserInfo.code ? userInfo.code : '#####'}</UserCode>
+      <UserCode>
+        {validUserInfo.userCode ? userInfo.userCode : '#####'}
+      </UserCode>
     </Profilecontainer>
   )
 }

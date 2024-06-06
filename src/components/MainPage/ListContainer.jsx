@@ -10,7 +10,7 @@ const ListContainer = ({ groupList }) => {
   const openModal = () => {
     dispatch(openCreateModal())
   }
-  console.log(groupList)
+
   return (
     <Container>
       <LineWrapper>

@@ -19,9 +19,9 @@ const LoginPage = () => {
   const handleLogin = async token => {
     try {
       const userData = await loginController(token)
-      const { username, code, profileImage } = userData.data
+      const { username, userCode, profileImage } = userData.data
 
-      dispatch(userInfo(username, code, profileImage, token))
+      dispatch(userInfo(username, userCode, profileImage, token))
       navigate('/main')
     } catch (error) {
       console.log(error)

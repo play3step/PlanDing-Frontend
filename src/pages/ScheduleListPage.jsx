@@ -19,7 +19,6 @@ const ScheduleListPage = () => {
     dispatch(addGroupList(userInfo.token))
   }
 
-  console.log(groupList)
   return (
     <>
       <GroupListContainer>

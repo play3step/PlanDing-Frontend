@@ -7,6 +7,7 @@ export const loginController = async token => {
         Authorization: `Bearer ${token}`
       }
     })
+
     return response.data
   } catch (error) {
     console.error('Error fetching posts:', error)
